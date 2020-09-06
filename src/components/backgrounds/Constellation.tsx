@@ -2,9 +2,9 @@ import * as React from "react"
 import Svg, { G, Path, Defs, LinearGradient, Stop } from "react-native-svg"
 /* SVGR has dropped some elements not supported by react-native-svg: filter */
 
-function SvgComponent() {
+function Constellation(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <Svg width={414} height={896} viewBox="0 0 414 896" fill="none">
+    <Svg width={414} height={896} viewBox="0 0 414 896" fill="none" {...props}>
       <G
         style={{
           mixBlendMode: "lighten",
@@ -1295,5 +1295,4 @@ function SvgComponent() {
   )
 }
 
-const MemoSvgComponent = React.memo(SvgComponent)
-export default MemoSvgComponent
+export default React.memo(Constellation)
