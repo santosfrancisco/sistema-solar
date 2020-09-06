@@ -26,10 +26,6 @@ export const PlanetImageWrapper = styled.View`
   justify-content: center;
 `;
 
-export const PlanetImage = styled.Image`
-  width: ${({ name }: { name: string }) => name === 'Saturno' ? '90%' : '55%'};
-`;
-
 export const Wrapper = styled.View`
   flex-direction: row;
   align-items: center;

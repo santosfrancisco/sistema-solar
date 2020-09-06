@@ -1,15 +1,22 @@
 import React from 'react';
-import { List, PlanetCardContainer, PlanetImage, Wrapper, Name, PlanetImageWrapper } from './styles';
+import {
+  List,
+  PlanetCardContainer,
+  Wrapper,
+  Name,
+  PlanetImageWrapper
+} from './styles';
 
-import data from './data';
+import data from '../../data/planets';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import colors from '../../styles/colors';
 
 type Planet = typeof data[0];
 
-interface PlanetProps {
+interface IPlanet {
   image: any;
+  title: string;
   name: string;
 }
 
@@ -17,22 +24,21 @@ const PlanetsList: React.FC = () => {
   const navigation = useNavigation()
 
   const handleClick = (planet: string) => {
-    navigation.navigate('Planet', { planet })
+    navigation.navigate('Planet', { planetName: planet })
   }
 
-  const PlanetCard: React.FC<PlanetProps> = ({ image, name }) => {
+  const PlanetCard: React.FC<IPlanet> = ({ image: Image, title, name }) => {
     return (
-      <PlanetCardContainer onPress={() => console.log('click')}>
+      <PlanetCardContainer onPress={() => handleClick(name)}>
         <PlanetImageWrapper>
-          <PlanetImage source={image} name={name} resizeMode="center" />
+          <Image width="100%" height={100} />
         </PlanetImageWrapper>
           <Wrapper>
-            <Name>{name}</Name>
+            <Name>{title}</Name>
             <Feather
               name="arrow-right"
               size={16}
               color={colors.gradients.button[1]}
-              onClick={() => handleClick(name)}
             />
           </Wrapper>
       </PlanetCardContainer>
@@ -40,7 +46,7 @@ const PlanetsList: React.FC = () => {
   }
   return (
     <List >
-      {data.map((planet: Planet) => <PlanetCard key={planet.name} image={planet.image} name={planet.name} />)}
+      {data.map((planet: Planet) => <PlanetCard key={planet.name} {...planet} />)}
     </List>
   );
 };
