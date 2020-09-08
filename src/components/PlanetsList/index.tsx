@@ -45,7 +45,7 @@ const PlanetsList: React.FC = () => {
     )
   }
   return (
-    <List >
+    <List>
       {data.map((planet: Planet) => <PlanetCard key={planet.name} {...planet} />)}
     </List>
   );

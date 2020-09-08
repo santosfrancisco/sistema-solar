@@ -8,11 +8,5 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
-    "baseUrl": "./src",
-    "paths": {
-      "*": ["./*"],
-      "@assets": ["./assets/*"],
-      "src/components": ["./components/*"],
-    }
   }
 }

@@ -1,20 +1,18 @@
 import styled from 'styled-components/native';
 import colors from '../../styles/colors';
-import constants from 'expo-constants';
+import constants from 'expo-constants'
 import { Platform } from 'react-native';
+import typography from '../../styles/typography';
 
 export const Container = styled.SafeAreaView`
   padding-top: ${Platform.OS === 'android' ? constants.statusBarHeight : 0}px;
-`;
-
-export const BGWrapper = styled.View`
   background: ${colors.brand.background};
-  position: absolute;
-  top: 0;
-  left: 0;
 `;
 
-export const ContentWrapper = styled.ScrollView`
-  margin-top: 34px;
-  padding: 0 20px;
+export const EmptyState = styled.Text.attrs({
+  children: 'Você ainda não salvou nenhum planeta :)'
+})`
+  color: ${colors.brand.white};
+  font: ${typography["home-title"]};
+  text-align: center;
 `;

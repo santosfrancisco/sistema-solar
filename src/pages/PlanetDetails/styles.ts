@@ -4,6 +4,7 @@ import constants from 'expo-constants';
 import colors from '../../styles/colors';
 import typography from '../../styles/typography';
 import { Feather } from '@expo/vector-icons';
+import GoBackButton from '../../components/GoBack';
 
 export const Container = styled.SafeAreaView`
   padding-top: ${Platform.OS === 'android' ? constants.statusBarHeight : 0}px;
@@ -11,17 +12,22 @@ export const Container = styled.SafeAreaView`
   flex: 1;
 `;
 
+export const GoBack = styled(GoBackButton)`
+  position: absolute;
+  left: 20px
+`;
+
 export const Background = styled.ImageBackground`
   width: 100%;
-  height: 280px;
+  height: 250px;
   background: ${colors.brand.background};
 `;
 
 export const ImageWrapper = styled.View`
   width: 100%;
-  height: 280px;
+  height: 250px;
   position: absolute;
-  top: 80px;
+  top: 50px;
 `;
 
 export const ContentWrapper = styled.ScrollView`

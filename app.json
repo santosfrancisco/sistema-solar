@@ -37,6 +37,7 @@
         "wasm",
         "svg"
       ]
-    }
+    },
+    "description": ""
   }
 }

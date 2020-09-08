@@ -1,8 +1,7 @@
 import React from 'react';
-import { View } from 'react-native';
-import { NavigationContainer, CompositeNavigationProp } from '@react-navigation/native';
-import { createBottomTabNavigator, BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { Feather } from '@expo/vector-icons';
 import colors from './styles/colors';
@@ -10,6 +9,7 @@ import Home from './pages/Home';
 import ComingSoon from './pages/ComingSoon';
 import PlanetDetails from './pages/PlanetDetails';
 import Welcome from './pages/Welcome';
+import Bookmark from './pages/Bookmark';
 
 type HomeStackParamList = {
   Home: undefined;
@@ -19,23 +19,6 @@ type HomeStackParamList = {
 const { Navigator, Screen } = createBottomTabNavigator();
 const MainStack = createStackNavigator();
 const HomeStack = createStackNavigator<HomeStackParamList>();
-
-
-
-function HomeStackScreen() {
-  return (
-    <HomeStack.Navigator initialRouteName="Home" headerMode="none">
-      <HomeStack.Screen
-        name="Home"
-        component={Home}
-      />
-      <HomeStack.Screen
-        name="Planet"
-        component={PlanetDetails}
-      />
-    </HomeStack.Navigator>
-  );
-}
 
 const Routes: React.FC = () => (
     <Navigator
@@ -64,7 +47,7 @@ const Routes: React.FC = () => (
       }}>
       <Screen
         name="Inicio"
-        component={HomeStackScreen}
+        component={Home}
         options={{
           tabBarIcon: ({ size, focused }) => {
             return (
@@ -92,7 +75,7 @@ const Routes: React.FC = () => (
         }} />
       <Screen
         name="Salvos"
-        component={ComingSoon}
+        component={Bookmark}
         options={{
           tabBarIcon: ({ size, focused }) => {
             return (
@@ -132,6 +115,10 @@ function MaintackScreen() {
         <MainStack.Screen
           name="App"
           component={Routes}
+        />
+        <MainStack.Screen
+          name="Planet"
+          component={PlanetDetails}
         />
       </MainStack.Navigator>
     </NavigationContainer>
